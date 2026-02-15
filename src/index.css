@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+.menu a.active {
+  background: rgb(109, 109, 218);
+  text-decoration: underline;
+}
