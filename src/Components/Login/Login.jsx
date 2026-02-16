@@ -13,6 +13,7 @@ const Login = () => {
     const password = event.target.password.value;
     console.log(email, password);
     setSuccess(false);
+    setError("");
     singinUser(email, password)
       .then((res) => {
         console.log(res);
