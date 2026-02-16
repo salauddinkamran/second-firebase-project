@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { AuthContext } from "../../contexts/AuthContext";
 import { use, useState } from "react";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const [success, setSuccess] = useState(false);
@@ -13,6 +14,15 @@ const Register = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     console.log(name, "+", email, "+", password);
+    const regularExpression =
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    if (!regularExpression.test(password)) {
+      setError(
+        "Password must be at least 6 characters and include uppercase, lowercase, number and special character.",
+      );
+      return;
+    }
+
     setSuccess(false);
     setError("");
     createUserSignUp(email, password)
